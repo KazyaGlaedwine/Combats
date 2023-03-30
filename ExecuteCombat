@@ -1,0 +1,38 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+/*
+
+This script should execute a combat sequence, flexible in modifying combat type, allowing multi-type combat sequences.
+
+*/
+
+public class GameCotnroller : MonoBehaviour 
+{
+	//Acquire Base Source
+	[SerializeField] private GameObject player = null;
+	[SerializeField] private GameObject enemy=  null;
+	
+	//Stats Visual
+	[SerializeField] private Slider health = null;
+	[SerializeField] private Slider stamina = null;
+	
+	private void Attack(GameObject target, float damage)
+	{
+		if (target == enemy)
+		{
+			enemyHealth.value -= damage;
+		}
+		else
+		{
+			playerHealth.value -= damage;
+		}
+	}
+	
+	private void Guard(GameObject target, float damage)
+	{
+		playerDEF.value += 50%;
+		player.isGuard = True;
+	}
+}
